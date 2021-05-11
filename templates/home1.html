@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Spam Detector For Emails!!</title>
+       <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='spam-favicon.ico') }}"-->
+        <!-- <link rel="stylesheet" type="text/css" href='style.css'> -->
+       <!-- <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>-->
+    </head>
+
+    <body>
+        <style>
+            body{
+    background-color:bisque;
+    margin-top: 5%;
+}
+.container h1{
+    text-align: center;
+    color:red;
+}
+.container h2{
+    color:navy;
+    text-align: center;
+}
+.ml-container{
+text-align:center;
+}
+.my-cta-button {
+  
+  width: 10%;
+  border: none;
+  background-color: lightcoral;
+  padding: 4px 18px;
+  font-size: 26px;
+  cursor: pointer;
+  text-align: center;
+}
+.results{
+    text-align: center;
+}
+        </style>
+
+        <!-- Website Title -->
+    	<div class="container">
+          <h1> Spam Detector For Emails!!</h1>
+    		<h2>Enter Your Message Here</h2>
+            <!-- <div class='description'>
+    			<p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+    		</div> -->
+    	</div>
+
+        <!-- Text Area -->
+    	<div class="ml-container">
+    		<form action="{{ url_for('predict') }}"  method="POST" >
+        		<textarea class='message-box' name="message" rows="15" cols="75"  ></textarea><br/>
+        		<input type="submit" class="my-cta-button" value="Predict">
+		
+        	</form>
+        </div>
+
+        <div class="results">
+			{% if prediction==1 %}
+				<h1 style="color:red">Be Careful ! This is a SPAM message.</h1>
+				
+			{% elif prediction==0 %}
+				<h1 style="color:green">Great! This is NOT a spam message.</h1>
+				
+			{% endif %}
+		
+		</div>
+
+    </body>
+</html>
